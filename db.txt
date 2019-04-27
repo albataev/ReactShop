@@ -1,0 +1,67 @@
+
+Категории:
+
+const CategoriesSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  russtitle: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  image: {
+    type: String
+  },
+  parent: {
+    type: String
+  },
+  level: {
+    type: String
+  }
+});
+
+Parent - если указано, то размещать ее вторым уровнем в меню
+Level - если указано, то видеть 0, 1, 2 и тд, понимать на каком уровне отображать
+
+Элементы каталога
+
+const CatalogSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  current: {
+    type: Boolean,
+    default: false
+  },
+  image: {
+    type: String
+  },
+  longtitle: {
+    type: String
+  },
+  externalurl: {
+    type: String
+  },
+  description: {
+    type: String
+  }
+});
+
+current - подсвечивать текущую категорию
+

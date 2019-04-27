@@ -1,0 +1,31 @@
+{
+  "presets": ["@babel/react", "@babel/preset-env"],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": false,
+        "regenerator": true
+      }
+    ],
+    [
+      "babel-plugin-transform-builtin-extend",
+      {
+        "globals": ["Error", "Array"]
+      }
+    ],
+    ["react-hot-loader/babel"],
+    ["@babel/plugin-syntax-dynamic-import"]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "@babel/transform-react-remove-prop-types",
+        "@babel/transform-react-constant-elements",
+        "@babel/transform-react-inline-elements",
+        "@babel/plugin-syntax-dynamic-import"
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+Catalog.js:
+
+  componentDidMount() {
+    this.props.getCatalog();
+    this.props.getCategories();
+  }
+  - вызывает CatalogItems, передает property catalog

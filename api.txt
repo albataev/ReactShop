@@ -1,0 +1,106 @@
+// @route   GET api/shop/catalog
+// @desc    Get all items in catalog
+// @access  Public
+// @return {array} array of objects representing items in catalog
+// object fields:
+// title: String
+// category: String
+// price: Number
+// current: Boolean
+// image: String
+// longtitle: String
+// externalurl: String
+// description: String
+/catalog
+
+
+// @route   GET api/shop/catalog/:item_id
+// @desc    Get item with particular id
+// @access  Public
+// @return {object} object representing item
+// object fields:
+// title: String
+// category: String
+// price: Number
+// current: Boolean
+// image: String
+// longtitle: String
+// externalurl: String
+// description: String
+/catalog/:item_id
+
+
+// @route   GET api/shop/categories/
+// @desc    Get all categories
+// @access  Public
+// @return {array} array of objects representing categories
+// object fields:
+//  title: String
+//  russtitle: String
+//  url: String
+//  description: String
+//  image: String
+//  parent: String
+//  level: String
+/categories/
+
+
+
+// @route   GET api/shop/categories/:category_id
+// @desc    Get category with particular id
+// @access  Public
+// @return {object} object representing category
+// object fields:
+//  title: String
+//  russtitle: String
+//  url: String
+//  description: String
+//  image: String
+//  parent: String
+//  level: String
+/categories/:category_id
+
+
+
+// @route   DELETE api/shop/catalog/:item_id
+// @desc    DELETE catalog item with particular id
+// @access  Private
+/catalog/:item_id
+
+
+
+// @route   DELETE api/shop/category/:category_id
+// @desc    DELETE category item with particular id
+// @access  Private
+/category/:category_id
+
+
+// @route   POST api/shop/category
+// @desc    Add category or several categories to categories
+// Gets the {array of objects} representing categories
+// object fields:
+//  title: String
+//  russtitle: String
+//  url: String
+//  description: String
+//  image: String
+//  parent: String
+//  level: String
+// @access  Private
+/category
+
+
+
+// @route   POST api/shop/catalog
+// @desc    Add item or several items to catalog
+// Gets the {array of objects} representing items
+// object fields:
+// title: String
+// longtitle: String
+// category: String
+// price: Number
+// current: Boolean
+// image: String
+// externalurl: String
+// description: String
+/catalog

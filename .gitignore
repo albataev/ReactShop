@@ -1,0 +1,37 @@
+.DS_Store
+.thumbs.db
+node_modules
+/dist
+/test
+/src-cordova/node_modules
+/src-cordova/platforms
+/src-cordova/plugins
+/src-cordova/www
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# My work files
+/config/keys_dev.js
+config/keys_dev.js
+db_credentials.txt
+files_description.txt
+mongo_commands.txt
+test.js
+/client/node_modules
+1.jpg
+client/src/1.jpg
+client/src/components/common/1.jpg
+client/src/components/profile/ProfileCreds_initial.js
+crawler/
+dataFromDigdi/
+plan.txt
+tmp.js

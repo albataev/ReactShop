@@ -1,0 +1,109 @@
+.product header {
+  margin-bottom: 0.857em;
+  border-bottom: 1px solid #dadada;
+}
+
+.electro-description {
+  margin-top: 1em;
+}
+
+.single-item-price {
+  color: #333e48;
+  font-size: 2em;
+  line-height: 1.286em;
+  font-weight: normal;
+}
+
+.description {
+  height: 100px;
+}
+
+.product-inner h3 {
+  cursor: pointer;
+  color: #2e6da4;
+  text-decoration: underline;
+}
+
+.price-add-to-cart {
+  color: #333e48;
+  font-size: 1em;
+  line-height: 1.286em;
+  font-weight: normal;
+  margin-bottom: 0.571em; }
+.single-product .price ins, .single-product .price del {
+  text-decoration: none; }
+.single-product .price del {
+  color: #848484;
+  font-size: 0.6em;
+  line-height: 1.5em;
+  margin-left: 0.174em; }
+.single-product .price del .amount {
+  text-decoration: line-through; }
+
+.widget_product_categories .product_cat > li > a {
+  cursor: pointer }
+
+li.product .product-inner, .section-onsale-product .onsale-product .product-inner, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-inner, .products-carousel .owl-item .product .product-inner {
+  padding: 0.429em 1.714em 0.357em 1.714em;
+  height: 100%;
+  position: relative; }
+
+li.product .price-add-to-cart, .section-onsale-product .onsale-product .price-add-to-cart, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .price-add-to-cart, .products-carousel .owl-item .product .price-add-to-cart {
+  clear: both;
+  /*margin-bottom: 0.929em;*/
+  position: relative; }
+li.product .price-add-to-cart::after, .section-onsale-product .onsale-product .price-add-to-cart::after, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .price-add-to-cart::after, .products-carousel .owl-item .product .price-add-to-cart::after {
+  content: "";
+  display: table;
+  clear: both; }
+li.product .price-add-to-cart .electro-price, .section-onsale-product .onsale-product .price-add-to-cart .electro-price, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .price-add-to-cart .electro-price, .products-carousel .owl-item .product .price-add-to-cart .electro-price {
+  line-height: 36px; }
+li.product .price-add-to-cart > .price, .section-onsale-product .onsale-product .price-add-to-cart > .price, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .price-add-to-cart > .price, .products-carousel .owl-item .product .price-add-to-cart > .price {
+  display: block;
+  float: left;
+  width: calc( 100% - 41px);
+  white-space: nowrap; }
+/*img {*/
+  /*width: 100%;*/
+/*}*/
+
+/*.landing {*/
+  /*position: relative;*/
+  /*background-size: cover;*/
+  /*background: url('./img/showcase.jpg') no-repeat center;*/
+  /*!*height: 100%;*!*/
+  /*height: calc( 100vh - 126px);*/
+  /*margin-top: -24px;*/
+  /*margin-bottom: -50px;*/
+/*}*/
+
+/*.landing-inner {*/
+  /*padding-top: 80px;*/
+/*}*/
+
+/*.dark-overlay {*/
+  /*background-color: rgba(0, 0, 0, 0.7);*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+/*}*/
+
+/*.card-form {*/
+  /*opacity: 0.9;*/
+/*}*/
+
+/*.latest-profiles-img {*/
+  /*width: 40px;*/
+  /*height: 40px;*/
+/*}*/
+
+/*.form-control::placeholder {*/
+  /*color: #bbb !important;*/
+/*}*/
+
+/*.categorylist {*/
+  /*margin-bottom: 50px;*/
+/*}*/
+
