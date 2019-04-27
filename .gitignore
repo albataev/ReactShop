@@ -35,3 +35,6 @@ crawler/
 dataFromDigdi/
 plan.txt
 tmp.js
+workflow.txt
+db.txt
+csv_export_from_digdi.js
