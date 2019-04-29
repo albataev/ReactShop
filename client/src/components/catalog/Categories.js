@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import isEmpty from '../../validation/is-empty';
+// import isEmpty from '../../validation/is-empty';
 
 // main page display catalog
 class CatalogItems extends Component {

@@ -18,11 +18,13 @@ import AddItem from './components/dashboard/AddItem';
 import EditItem from './components/dashboard/EditItem';
 import Catalog from './components/catalog/Catalog';
 import NotFound from './components/not-found/NotFound';
+import ReactTable from './components/react-table/ReactTable';
 
 import './style.css';
 import './assets/css/bootstrap.min.css';
 import './App.css';
 import './assets/images/fav-icon.png';
+import 'react-table/react-table.css';
 
 
 // Check for token
@@ -52,6 +54,7 @@ class App extends Component {
             <div id="content" className="site-content" tabIndex="-1">
               <Switch>
                 <Route exact path="/" component={Catalog} />
+                {/*<Route exact path="table" component={ReactTable} />*/}
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/landing" component={Landing} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />

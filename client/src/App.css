@@ -7,6 +7,17 @@
   margin-top: 1em;
 }
 
+.collapsible-item {
+  padding: 7px 0;
+  cursor: pointer;
+}
+
+.collapsible-item li > span{
+  font-weight: 600;
+}
+
+
+
 .single-item-price {
   color: #333e48;
   font-size: 2em;
