@@ -2,12 +2,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import {withRouter, Link, BrowserRouter as Router} from 'react-router-dom';
 import getSlug from 'speakingurl';
+import Collapsible from 'react-collapsible';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 import isEmpty from '../../validation/is-empty';
 import SingleItem from './SingleItem';
 import { setCurrentItem } from '../../actions/shopActions';
-import Collapsible from 'react-collapsible';
 
 
 // main page display catalog
@@ -32,22 +33,23 @@ class CatalogItems extends Component {
         const { engToRusCatTitlesMap } = this.props;
 
         for (let i = 0; i < categories.length; i++) {
-            let collapsedChildItems = [];
+            const collapsedChildItems = [];
             if (categories[i].hasChildren) {
-                let parentCatId = categories[i]._id;
+                const parentCatId = categories[i]._id;
                 for (let childCatIndex = 0; childCatIndex < categories.length; childCatIndex++) {
                     if (categories[childCatIndex].parent !== undefined && categories[childCatIndex].parent === parentCatId) {
                         collapsedChildItems.push(
-                            <li
+                            <ListGroupItem
                                 key={categories[childCatIndex]._id}
                                 aria-labelledby="dropdownMenuLink"
                             >
                                 <Link
+                                    onClick={window.scrollTo(0, 0)}
                                     to={{ pathname: `/tovary/${categories[childCatIndex].title}` }}
                                 >
                                     {categories[childCatIndex].russtitle}
                                 </Link>
-                            </li>
+                            </ListGroupItem>
                         );
                     }
                     console.log('collapsedChildItems', collapsedChildItems);
@@ -55,44 +57,34 @@ class CatalogItems extends Component {
 
                 categoriesLinksNew.push(
 
-                    <li
+                    <ListGroupItem
                         className="cat-item collapsible-item"
                         key={categories[i]._id}
                         aria-expanded="false"
                     >
-                        <Collapsible className="cat-item" contentContainerTagName="li" trigger={`${categories[i].russtitle} >>`}>
+                        <Collapsible className="cat-item" contentContainerTagName="div" trigger={`${categories[i].russtitle} >>`}>
                             <ul>
                                 {collapsedChildItems}
                             </ul>
                         </Collapsible>
-                    </li>
+                    </ListGroupItem>
 
                 );
             } else if (!categories[i].hasChildren
                     && (categories[i].parent === undefined
                     || categories[i].parent.length === 0)) {
                 categoriesLinksNew.push(
-                    <li className="cat-item" key={categories[i]._id}>
+                    <ListGroupItem className="cat-item" key={categories[i]._id}>
                         <Link
+                            onClick={window.scrollTo(0, 0)}
                             to={{ pathname: `/tovary/${categories[i].title}` }}
                         >
                             {categories[i].russtitle}
                         </Link>
-                    </li>
+                    </ListGroupItem>
                 );
             }
         }
-
-
-        const categoriesLinks = categories.map((category) => (
-            <li className="cat-item" key={category._id}>
-                <Link
-                    to={{ pathname: `/tovary/${category.title}` }}
-                >
-                    {category.russtitle}
-                </Link>
-            </li>
-        ));
 
         if (this.props.categoryName === 'all') {
             rusCategoryName = 'Все товары';
@@ -104,102 +96,99 @@ class CatalogItems extends Component {
             console.log('===+++===+++[CatalogItems] validCategory found: ', this.props.categoryName);
             if (!this.props.validItemProvided) {
                 catalogItemsData = <h2>Товар не найден</h2>;
+                console.log('===+++>[CatalogItems] Пустая категория');
             } else {
                 catalogItemsData = filteredItemsRendered.map(item => (
-                    <li className="product " key={item._id}>
-                        <div className="product-outer" style={{ height: '450px' }}>
-                            <div className="product-inner">
-                                <span className="loop-product-categories">
-                                    <a rel="tag">{engToRusCatTitlesMap[item.category]}</a>
-                                </span>
-                                <Link
-                                    to={
-                                        { pathname: `/tovary/${getSlug(item.category, { lang: 'ru' })}/${getSlug(item.title, { lang: 'ru' })}` }
-                                    }
-                                >
-                                    <h3>{item.title}</h3>
-                                    <div className="product-thumbnail">
-                                        <img src={item.image} alt="" />
-                                    </div>
-                                </Link>
-                                <div className="price-add-to-cart">
-                                    <span className="price">
-                                        <span className="electro-price">
-                                            <span className="amount">&#8381;&nbsp;{item.price}</span>
+                    <li className="product" key={item._id}>
+                        <div className="product-inner">
+                            <span className="loop-product-categories">
+                                <a rel="tag">{engToRusCatTitlesMap[item.category]}</a>
+                            </span>
+                            <Link
+                                to={
+                                    { pathname: `/tovary/${getSlug(item.category, { lang: 'ru' })}/${getSlug(item.title, { lang: 'ru' })}` }
+                                }
+                            >
+                                <h3>{item.title}</h3>
+                                <div className="product-thumbnail">
+                                    <img
+                                        src={isEmpty(item.image)
+                                            ? ('ad-banner-3.png')
+                                            : (item.image)
+                                        }
+                                        alt=""
+                                    />
+                                </div>
+                            </Link>
+                            <div className="price-add-to-cart">
+                                <span className="amount">&#8381;&nbsp;{item.price}</span>
+                            </div>
+                            <div>
+                                {isEmpty(item.description)
+                                    ? (
+                                        <span>
+                                            <strong>Описание: </strong>не указано
                                         </span>
-                                    </span>
-                                </div>
-                                <div>
-                                    {isEmpty(item.description)
-                                        ? (
-                                            <span>
-                                                <strong>Описание: </strong>не указано
-                                            </span>
-                                        )
-                                        : (
-                                            <span>
-                                                <strong>Описание: </strong>
-                                                {(item.description.length > 50)
-                                                    ? `${item.description.slice(0, 50)}...`
-                                                    : item.description
-                                                }
-                                            </span>
-                                        )
-                                    }
-                                </div>
+                                    )
+                                    : (
+                                        <span>
+                                            <strong>Описание: </strong>
+                                            {(item.description.length > 50)
+                                                ? `${item.description.slice(0, 50)}...`
+                                                : item.description
+                                            }
+                                        </span>
+                                    )
+                                }
                             </div>
                         </div>
+
                     </li>
                 ));
             }
         } else {
             catalogItemsData = <h1>Категория товара не найдена</h1>;
         }
-        // categoriesLinks.unshift(template);
-
         return (
             <div>
-                <div id="primary" className="content-area">
+                <div id="primary">
                     <main id="main" className="site-main">
                         <section>
-                            {this.props.selectedItem === null
-                                ? (
-                                    <div>
-                                        <header>
-                                            <a name="top-page">
-                                                <h2 className="h1">{rusCategoryName}</h2>
-                                            </a>
-                                        </header>
-                                        <div className="tab-content">
-                                            <div role="tabpanel" className="tab-pane active" id="grid" aria-expanded="true">
-                                                <ul className="products columns-3">
-                                                    {catalogItemsData}
-                                                </ul>
-                                            </div>
+                            <div className="row">
+                                <aside className="col-3 d-none d-lg-block categories">
+                                    <ListGroup className="collapsible-cat">
+                                        {categoriesLinksNew}
+                                    </ListGroup>
+                                </aside>
+                                <aside className="col-12 d-lg-none categories">
+                                    <ListGroup className="collapsible-cat">
+                                        {categoriesLinksNew}
+                                    </ListGroup>
+                                </aside>
+
+                                {this.props.selectedItem === null
+                                    ? (
+                                        <div className="col-lg-9 col-md-12">
+                                            <header>
+                                            <h2 className="h1">{rusCategoryName}</h2>
+                                            </header>
+                                            <ul className="products">
+                                                {catalogItemsData}
+                                            </ul>
                                         </div>
-                                    </div>
-                                )
-                                : (
-                                    <SingleItem
-                                        selectedItem={this.props.selectedItem}
-                                        rusCategory={engToRusCatTitlesMap[this.props.selectedItem.category]}
-                                        history={this.props.history}
-                                        setCurrentItem={this.props.setCurrentItem}
-                                    />
-                                )
-                            }
+                                    )
+                                    : (
+                                        <SingleItem
+                                            selectedItem={this.props.selectedItem}
+                                            rusCategory={engToRusCatTitlesMap[this.props.selectedItem.category]}
+                                            history={this.props.history}
+                                            setCurrentItem={this.props.setCurrentItem}
+                                        />
+                                    )
+                                }
+                            </div>
                         </section>
                     </main>
-                </div>
-                <div id="sidebar" className="sidebar">
-                    <aside id="electro_product_categories_widget-2" className="widget widget_product_categories">
-                        <ul className="product-categories category-single">
-
-                            <ul className="children product_cat">
-                                {categoriesLinksNew}
-                            </ul>
-                        </ul>
-                    </aside>
                 </div>
             </div>
         );

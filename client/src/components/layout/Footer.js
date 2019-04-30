@@ -1,9 +1,14 @@
 import React from 'react';
+import { Row, Col } from 'reactstrap';
 
-export default () => {
-  return (
-    <footer className="bg-dark text-white mt-5 p-4 text-center">
-      Copyright &copy; {new Date().getFullYear()} Digdi.ru
-    </footer>
-  );
-};
+export default () => (
+    <Row>
+        <Col className="footer">
+            Copyright &copy;
+            {' '}
+            {new Date().getFullYear()}
+            {' '}
+Digdi.ru
+        </Col>
+    </Row>
+);
