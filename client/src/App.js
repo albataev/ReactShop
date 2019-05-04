@@ -11,9 +11,11 @@ import PrivateRoute from './components/common/PriveteRoute';
 
 import NavbarNew from './components/layout/NavbarNew';
 import Footer from './components/layout/Footer';
-import Landing from './components/layout/Landing';
+import About from './components/layout/About';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/auth/Login';
+import DostavkaOplata from './components/layout/DostavkaOplata';
+import Garantija from './components/layout/Garantija';
 import AddItem from './components/dashboard/AddItem';
 import EditItem from './components/dashboard/EditItem';
 import Catalog from './components/catalog/Catalog';
@@ -21,6 +23,8 @@ import NotFound from './components/not-found/NotFound';
 
 import './App.css';
 import './assets/images/fav-icon.png';
+
+
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -44,14 +48,16 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <div className="App">
+                    <div className="">
                         <NavbarNew />
-                        <div id="" className="">
+                        <div id="" className="root-div">
                             <Switch>
                                 <Route exact path="/" component={Catalog} />
                                 {/* <Route exact path="table" component={ReactTable} /> */}
                                 <Route exact path="/login" component={Login} />
-                                <Route exact path="/landing" component={Landing} />
+                                <Route exact path="/about" component={About} />
+                                <Route exact path="/доставка-и-оплата" component={DostavkaOplata} />
+                                <Route exact path="/гарантия" component={Garantija} />
                                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                                 <PrivateRoute exact path="/add-item" component={AddItem} />
                                 <PrivateRoute exact path="/edit-item" component={EditItem} />

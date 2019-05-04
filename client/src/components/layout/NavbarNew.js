@@ -1,13 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/authActions';
 import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
@@ -15,12 +10,14 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
 
 class NavbarNew extends React.Component {
     constructor(props) {
         super(props);
-
-        // this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false
         };
@@ -39,7 +36,7 @@ class NavbarNew extends React.Component {
     }
 
     render() {
-        const { isAuthenticated, user } = this.props.auth;
+        const { isAuthenticated } = this.props.auth;
         const authLinks = (
             <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -62,25 +59,49 @@ class NavbarNew extends React.Component {
         );
 
         return (
-            <header id="masthead" className="site-header header-v2" style={{ backgroundColor: '#fed700', marginBottom: '10px' }}>
+            <header className="" style={{ backgroundColor: '#fed700', marginBottom: '10px' }}>
                 <div className="container">
-                    <div className="row align-items-center justify-content-start">
-                        <div className="col-2 logo d-none d-lg-block">
+                    <div className="row justify-content-start align-items-end">
+                        <div className="col-5 d-lg-none">
+                            <h4 className="mobile-header">Digdi.ru</h4>
+                            <span className="mobile-subheader">
+                                Электронный дискаунтер
+                            </span>
+                        </div>
+                        <div className="col-7 d-lg-none contacts-top">
+                            <span className="support-number">
+                                <i className="fas fa-phone" />
+                                {' '}
+                                +7 (800) 856 80 60
+                            </span>
+                            <br />
+                            <span className="support-email">
+                                <i className="far fa-envelope" />
+                                {' '}
+                                info@digdi.ru
+                            </span>
+                        </div>
+                        <div className="col-3 logo d-none d-lg-block">
                             <Link to="/">
-                                <img alt="logo" src="http://digdi.ru/wp-content/uploads/2019/01/cropped-SAVE_20190129_094653-1.jpeg" />
+                                <img alt="logo" src="/logo.png" />
                             </Link>
                         </div>
-                        <div className="col-4">
+                        <div className="col-6">
                             <Navbar color="faded" light expand="md">
-
                                 <NavbarToggler onClick={this.toggle} />
                                 <Collapse isOpen={this.state.isOpen} navbar>
                                     <Nav className="ml-auto" navbar>
                                         <NavItem>
-                                            <NavLink href="#">Информация</NavLink>
+                                            <NavLink href="/">Каталог</NavLink>
                                         </NavItem>
                                         <NavItem>
-                                            <NavLink href="#">Контакты</NavLink>
+                                            <NavLink href="/доставка-и-оплата">Доставка&nbsp;и&nbsp;оплата</NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink href="/гарантия">Гарантия</NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink href="/about">О&nbsp;нас</NavLink>
                                         </NavItem>
                                         {isAuthenticated ? authLinks : null}
 
@@ -88,7 +109,7 @@ class NavbarNew extends React.Component {
                                 </Collapse>
                             </Navbar>
                         </div>
-                        <div className="col-3">
+                        <div className="col-3 d-none d-lg-block">
                             <div className="media" style={{ textAlign: 'right' }}>
                                 <div className="media-body">
                                     <span className="support-number">
@@ -108,17 +129,14 @@ class NavbarNew extends React.Component {
     }
 }
 
-Navbar.propTypes = {
+NavbarNew.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    user: PropTypes.object.isRequired
+    isAuthenticated: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, { logoutUser })(
-    NavbarNew
-);
+export default connect(mapStateToProps, { logoutUser })(NavbarNew);

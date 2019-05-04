@@ -17,9 +17,9 @@ module.exports = {
     'localStorage': false
   },
   'rules': { 'react/jsx-filename-extension': [0],
-      'indent': ['error', 2],
-      'react/jsx-indent': ['error', 2],
-      'react/jsx-indent-props': ['error', 2],
+      'indent': ['error', 4],
+      'react/jsx-indent': ['error', 4],
+      'react/jsx-indent-props': ['error', 4],
       'no-console': 'off',
       'max-len': 'off',
       'import/no-named-as-default': 0, // https://stackoverflow.com/questions/44437203/how-do-i-resolve-eslint-import-no-named-as-default

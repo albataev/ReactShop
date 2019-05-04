@@ -20,6 +20,9 @@ yarn-error.log*
 *.sln
 
 # My work files
+notes.txt
+workflow.txt
+package_before_cleanUp.json
 /config/keys_dev.js
 config/keys_dev.js
 db_credentials.txt
@@ -38,3 +41,6 @@ tmp.js
 workflow.txt
 db.txt
 csv_export_from_digdi.js
+client/src/components/catalog/old_working_catalog/
+client/src/components/catalog/old/
+client/src/old/

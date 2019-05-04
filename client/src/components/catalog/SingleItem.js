@@ -6,21 +6,19 @@ function SingleItem(props) {
     const specification = props.selectedItem.longtitle.split('\n')
         .map((descItem, index) => (<li key={generateKey(index)}>{descItem}</li>));
     return (
-        <div className="col-9 product">
+        <div className="col-lg-9 col-md-12 product">
             <header>
-                <a name="top-page">
-                    <h2 className="h1">{props.rusCategory}</h2>
-                </a>
+                <h2 className="h1">{props.rusCategory}</h2>
             </header>
             <div className="row">
-                <div className="col-6">
+                <div className="col-lg-6 col-md-12">
                     <div className="thumbnails-single">
                         <a href={props.selectedItem.image} target="_blank" rel="noopener noreferrer">
-                            <img src={props.selectedItem.image} />
+                            <img src={props.selectedItem.image} alt={`Товар: ${props.selectedItem.title}`} />
                         </a>
                     </div>
                 </div>
-                <div className=" col-6">
+                <div className="col-lg-6 col-md-12">
                     <h3 itemProp="name">
                         {props.selectedItem.title}
                     </h3>

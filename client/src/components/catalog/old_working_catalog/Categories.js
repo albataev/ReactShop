@@ -26,7 +26,7 @@ class CatalogItems extends Component {
     const { categories } = this.props.shop;
     let categoriesLinks = [];
     if (!this.props.shop.categoriesLoading) {
-      console.log('[CatalogItems] categories: ', categories);
+      console.log('[CatalogPage] categories: ', categories);
       for (let i = 0; i < Object.keys(categories).length; i += 1) {
         options[categories[i].title] = categories[i].russtitle;
       }
