@@ -12,9 +12,12 @@ Hopefully this app will be in production soon
 Demo
 --------
 [Current demo on Heroku](https://shopdigdi.herokuapp.com/ "Heroku")
-Login page: https://shopdigdi.herokuapp.com/login
-Use login: test@test.ru
-with password: 123456
+
+[Login page](https://shopdigdi.herokuapp.com/ "Login page")
+
+
+Use login: test@test.ru with password: 123456
+
 Database connection is read-only, but you will be able to see all implemented backend logic.
 
 Documentation
